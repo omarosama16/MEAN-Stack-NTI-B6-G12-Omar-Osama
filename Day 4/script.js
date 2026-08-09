@@ -57,3 +57,32 @@ var message = setTimeout(function() {
 }, 5000);
 clearTimeout(message);
 */
+// Task 3 Crud without DOM
+/*
+var items = [];
+function createItem(item) {
+    items.push(item);
+}
+function readItems() {
+    items.forEach(function(item) {
+        console.log(item);
+    });
+}
+function updateItem(index, newItem) {
+    items[index] = newItem;
+}
+function deleteItem(index) {
+    items.splice(index, 1);
+}
+createItem("Apple");
+createItem("Banana");
+createItem("Orange");
+console.log("Items:");
+readItems();
+updateItem(1, "Mango");
+console.log("after update:");
+readItems();
+deleteItem(0);
+console.log("after delete:");
+readItems();
+*/
