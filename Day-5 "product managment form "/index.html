@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>NTI TaSK : Product Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="task">
+                <img
+                    src="./logo.png"
+                    alt="NTI Logo"
+                    class="nti-logo"
+                >
+                <div class="task-info">
+                    <h1>Product Manager</h1>
+                    <p>CRUD Management System</p>
+                </div>
+            </div>
+            <div class="task-name">
+                NTI <span>•</span> Day 5
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <section class="form-box">
+            <div class="section-title">
+                <div>
+                    <h2>Add Product</h2>
+                    <p>Create a new product</p>
+                </div>
+                <span class="form-icon">+</span>
+            </div>
+            <div class="form-content">
+                <div class="input-box">
+                    <label for="productName">
+                        Product Name
+                    </label>
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="Enter product name"
+                    >
+                </div>
+                <div class="input-box">
+                    <label for="productDesc">
+                        Description
+                    </label>
+                    <input
+                        type="text"
+                        id="productDesc"
+                        placeholder="Enter description"
+                    >
+                </div>
+                <div class="input-box">
+                    <label for="productColor">
+                        Color
+                    </label>
+                    <select id="productColor">
+                        <option value="">
+                            Select color
+                        </option>
+                        <option value="Red">
+                            Red
+                        </option>
+                        <option value="Blue">
+                            Blue
+                        </option>
+                        <option value="Green">
+                            Green
+                        </option>
+                        <option value="Yellow">
+                            Yellow
+                        </option>
+                        <option value="Black">
+                            Black
+                        </option>
+                        <option value="White">
+                            White
+                        </option>
+                    </select>
+                </div>
+                <div class="checkbox-box">
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="StockAvalability"
+                        >
+                        <span>
+                            Available in stock ?
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-buttons">
+                <button
+                    id="addBtn"
+                    onclick="addProduct()"
+                >
+                    Add Product
+                </button>
+            </div>
+        </section>
+
+        <section
+            class="form-box update-form"
+            id="updateForm"
+        >
+            <div class="section-title">
+                <div>
+                    <h2>Update Product</h2>
+                    <p>Edit the selected product</p>
+                </div>
+                <button
+                    class="close-btn"
+                    onclick="closeUpdateForm()"
+                >
+                    ×
+                </button>
+            </div>
+            <div class="form-content">
+                <div class="input-box">
+                    <label for="updateName">
+                        Product Name
+                    </label>
+                    <input
+                        type="text"
+                        id="updateName"
+                        placeholder="Product name"
+                    >
+                </div>
+                <div class="input-box">
+                    <label for="updateDesc">
+                        Description
+                    </label>
+                    <input
+                        type="text"
+                        id="updateDesc"
+                        placeholder="Description"
+                    >
+                </div>
+                <div class="input-box">
+                    <label for="updateColor">
+                        Color
+                    </label>
+                    <select id="updateColor">
+                        <option value="">
+                            Select color
+                        </option>
+                        <option value="Red">
+                            Red
+                        </option>
+                        <option value="Blue">
+                            Blue
+                        </option>
+                        <option value="Green">
+                            Green
+                        </option>
+                        <option value="Yellow">
+                            Yellow
+                        </option>
+                        <option value="Black">
+                            Black
+                        </option>
+                        <option value="White">
+                            White
+                        </option>
+                    </select>
+                </div>
+                <div class="checkbox-box">
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="updateStock"
+                        >
+                        <span>
+                            Is it in Stock ?
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-buttons">
+                <button
+                    class="cancel-btn"
+                    onclick="closeUpdateForm()"
+                >
+                    Cancel
+                </button>
+                <button
+                    id="saveUpdateBtn"
+                    onclick="saveUpdate()"
+                >
+                    Save Changes
+                </button>
+            </div>
+        </section>
+        <section class="search-section">
+            <div class="search-title">
+                <h2>Products</h2>
+                <span id="productCount">
+                    0 products
+                </span>
+            </div>
+            <div class="search-box">
+                <span class="search-icon">
+                    ⌕
+                </span>
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search products by name..."
+                    oninput="searchProducts()"
+                >
+            </div>
+        </section>
+        <section class="products-box">
+            <div class="products-header">
+                <div>
+                    Name
+                </div>
+                <div>
+                    Description
+                </div>
+                <div>
+                    Color
+                </div>
+                <div>
+                    Stock
+                </div>
+                <div>
+                    Actions
+                </div>
+            </div>
+            <div id="productsContainer"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
