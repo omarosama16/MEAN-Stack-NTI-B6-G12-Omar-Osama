@@ -1,0 +1,22 @@
+.footer {
+  background-color: #25211e;
+  color: #ffffff;
+}
+.footer-brand {
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+.footer h6 {
+  color: #ffffff;
+}
+.footer-link {
+  color: #a9a29c;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-link:hover {
+  color: #c18b63;
+}
+.footer .text-secondary {
+  color: #a9a29c !important;
+}

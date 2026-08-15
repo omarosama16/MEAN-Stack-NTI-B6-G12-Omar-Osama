@@ -1,0 +1,18 @@
+.navbar-brand {
+  letter-spacing: 3px;
+}
+.nav-link {
+  color: #55504b;
+}
+.nav-link:hover,
+.nav-link.active {
+  color: #8b5e3c;
+}
+.btn-dark {
+  background-color: #25211e;
+  border-color: #25211e;
+}
+.btn-dark:hover {
+  background-color: #8b5e3c;
+  border-color: #8b5e3c;
+}

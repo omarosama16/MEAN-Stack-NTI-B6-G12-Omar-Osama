@@ -1,0 +1,21 @@
+.about-section {
+  background-color: #f7f3ed;
+}
+
+.about-image {
+  width: 100%;
+  height: 550px;
+  object-fit: cover;
+}
+
+.about-section h2 {
+  color: #25211e;
+}
+
+.about-section h5 {
+  color: #25211e;
+}
+
+.about-section p {
+  line-height: 1.7;
+}

@@ -1,0 +1,29 @@
+.menu-section {
+  background-color: #ffffff;
+}
+
+.coffee-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.coffee-card:hover {
+  transform: translateY(-6px);
+}
+
+.coffee-placeholder {
+  height: 220px;
+  background-color: #f1ebe4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #8b5e3c;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.price {
+  color: #8b5e3c;
+  font-weight: 700;
+}
