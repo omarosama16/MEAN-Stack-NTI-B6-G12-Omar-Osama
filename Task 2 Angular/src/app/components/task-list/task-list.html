@@ -1,0 +1,281 @@
+<div class="input-group mb-4 shadow-sm">
+  <span class="input-group-text bg-white border-0">
+    Search
+  </span>
+  <input
+    type="text"
+    class="form-control border-0"
+    placeholder="Search for your tasks"
+    [(ngModel)]="searchText">
+
+</div>
+
+@if (editingTask) {
+  <div class="card border-primary shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+      <strong>
+        Edit Task
+      </strong>
+
+    </div>
+
+
+    <div class="card-body">
+
+      <div class="row g-3">
+        <div class="col-md-6">
+
+          <label class="form-label fw-semibold">
+            Task Title
+          </label>
+
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="editingTask.title">
+
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">
+            Category
+          </label>
+          <select
+            class="form-select"
+            [(ngModel)]="editingTask.category">
+            <option value="Study">
+              Study
+            </option>
+            <option value="Work">
+              Work
+            </option>
+            <option value="Personal">
+              Personal
+            </option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+
+          <label class="form-label fw-semibold">
+            Priority
+          </label>
+
+          <select
+            class="form-select"
+            [(ngModel)]="editingTask.priority">
+
+            <option value="High">
+              High
+            </option>
+            <option value="Medium">
+              Medium
+            </option>
+            <option value="Low">
+              Low
+            </option>
+          </select>
+        </div>
+      </div>
+      @if (!editingTask.title.trim()) {
+        <div class="alert alert-danger mt-3 mb-0 py-2">
+          Task title cannot be empty.
+        </div>
+      }
+
+      <div class="mt-3 d-flex gap-2">
+        <button
+          class="btn btn-success"
+          [disabled]="!editingTask.title.trim()"
+          (click)="saveTask()">
+
+          Save Changes
+
+        </button>
+
+        <button
+          class="btn btn-outline-secondary"
+          (click)="cancelEdit()">
+
+          Cancel
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+  <div>
+
+    <h4 class="fw-bold mb-1">
+      Your Tasks
+    </h4>
+
+    <p class="text-secondary small mb-0">
+      {{ filteredTasks.length }} task(s) found
+    </p>
+
+  </div>
+
+</div>
+
+
+@for (task of filteredTasks; track task.id) {
+
+  <div
+    class="card border-0 shadow-sm mb-3"
+    [class.bg-body-secondary]="task.completed"
+    [attr.data-category]="task.category">
+
+    <div class="card-body">
+
+      <div class="row align-items-center">
+
+        <div class="col-md-7">
+
+          <div class="d-flex align-items-center">
+
+            <button
+              type="button"
+              class="btn btn-sm me-3"
+              [class.btn-success]="task.completed"
+              [class.btn-outline-secondary]="!task.completed"
+              (click)="toggleTask(task.id)">
+
+              {{ task.completed ? 'Completed' : 'Pending' }}
+
+            </button>
+
+
+            <div>
+
+              <h6
+                class="fw-bold mb-1"
+                [class.text-decoration-line-through]="task.completed">
+
+                {{ task.title }}
+
+              </h6>
+
+
+              <span class="text-secondary small">
+                {{ task.category }}
+              </span>
+
+
+              @switch (task.priority) {
+
+                @case ('High') {
+
+                  <span class="badge bg-danger ms-2">
+                    High
+                  </span>
+
+                }
+
+                @case ('Medium') {
+
+                  <span class="badge bg-warning text-dark ms-2">
+                    Medium
+                  </span>
+
+                }
+
+                @case ('Low') {
+
+                  <span class="badge bg-success ms-2">
+                    Low
+                  </span>
+
+                }
+
+              }
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-5 mt-3 mt-md-0">
+
+          <div class="d-flex justify-content-md-end gap-2">
+
+            <button
+              class="btn btn-sm btn-outline-primary"
+              (click)="editTask(task)">
+
+              Edit
+
+            </button>
+
+
+            <button
+              class="btn btn-sm btn-outline-success"
+              (click)="toggleTask(task.id)">
+
+              {{ task.completed ? 'Undo' : 'Complete' }}
+
+            </button>
+
+
+            <button
+              class="btn btn-sm btn-outline-danger"
+              [attr.aria-label]="'Delete ' + task.title"
+              (click)="deleteTask(task.id)">
+
+              Delete
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}
+
+@empty {
+
+  <div class="card border-0 shadow-sm">
+
+    <div class="card-body text-center py-5">
+
+      @if (searchText) {
+
+        <h5 class="fw-bold">
+          No tasks found
+        </h5>
+
+        <p class="text-secondary mb-0">
+          Try a different search name.
+        </p>
+
+      } @else {
+
+        <h5 class="fw-bold">
+          No tasks yet
+        </h5>
+
+        <p class="text-secondary mb-0">
+          Add your first task above.
+        </p>
+
+      }
+
+    </div>
+
+  </div>
+
+}

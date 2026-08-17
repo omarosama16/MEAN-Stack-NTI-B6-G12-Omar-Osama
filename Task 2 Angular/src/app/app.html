@@ -1,0 +1,97 @@
+<div class="min-vh-100 bg-light d-flex flex-column">
+  <nav class="navbar navbar-light bg-white border-bottom">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1 fw-bold text-primary">
+        Taskaty
+      </span>
+
+      <span class="text-muted small">
+        NTI 2nd Angular Task
+      </span>
+
+    </div>
+  </nav>
+
+  <main class="container py-5 flex-grow-1">
+    <div class="row align-items-center mb-5">
+
+      <div class="col-md-8">
+        <h1 class="display-6 fw-bold mb-2">
+          My Tasks
+        </h1>
+        <p class="text-secondary mb-0">
+          Manage your daily tasks in one place.
+        </p>
+
+      </div>
+
+
+      <div class="col-md-4 mt-4 mt-md-0">
+
+        <div class="card border-0 shadow-sm">
+
+          <div class="card-body">
+
+            <div class="d-flex justify-content-between mb-2">
+
+              <span class="fw-semibold">
+                Progress
+              </span>
+
+              <span class="text-primary fw-bold">
+                {{ completedTasks }} / {{ tasks.length }}
+              </span>
+
+            </div>
+
+
+            <div
+              class="progress"
+              role="progressbar"
+              [attr.aria-valuenow]="completedTasks"
+              aria-valuemin="0"
+              [attr.aria-valuemax]="tasks.length">
+
+              <div
+                class="progress-bar"
+                [style.width.%]="
+                  tasks.length > 0
+                    ? (completedTasks / tasks.length) * 100
+                    : 0
+                ">
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <app-task-form
+      (taskAdded)="addTask($event)">
+    </app-task-form>
+
+    <app-task-list
+      [tasks]="tasks"
+      (taskDeleted)="deleteTask($event)"
+      (taskToggled)="toggleTask($event)"
+      (taskUpdated)="updateTask($event)">
+    </app-task-list>
+
+  </main>
+
+  <footer class="bg-white border-top">
+    <div class="container py-4 text-center">
+      <span class="fw-semibold text-secondary">
+        Taskaty
+      </span>
+    </div>
+
+  </footer>
+
+</div>

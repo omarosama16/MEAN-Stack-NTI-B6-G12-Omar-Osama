@@ -1,0 +1,105 @@
+<div class="card border-0 shadow-sm mb-4">
+
+  <div class="card-body p-4">
+
+    <div class="mb-4">
+
+      <h5 class="fw-bold mb-1">
+        Add New Task
+      </h5>
+
+      <p class="text-secondary small mb-0">
+        keep track of your work.
+      </p>
+
+    </div>
+
+    <div class="row g-3">
+
+      <div class="col-lg-6">
+
+        <label class="form-label fw-semibold">
+          Task Title
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter task title..."
+          [(ngModel)]="title">
+
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+
+        <label class="form-label fw-semibold">
+          Category
+        </label>
+
+        <select
+          class="form-select"
+          [(ngModel)]="category">
+          <option value="Study">
+            Study
+          </option>
+          <option value="Work">
+            Work
+          </option>
+          <option value="Personal">
+            Personal
+          </option>
+        </select>
+
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+
+        <label class="form-label fw-semibold">
+          Priority
+        </label>
+
+        <select
+          class="form-select"
+          [(ngModel)]="priority">
+
+          <option value="High">
+            High
+          </option>
+          <option value="Medium">
+            Medium
+          </option>
+          <option value="Low">
+            Low
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+    @if (!title.trim()) {
+
+      <div class="form-text mt-2">
+        Enter a task title to continue
+      </div>
+
+    }
+
+    <div class="mt-4">
+
+      <button
+        type="button"
+        class="btn btn-primary px-4"
+        [disabled]="!title.trim()"
+        (click)="addTask()">
+
+        Add Task
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
